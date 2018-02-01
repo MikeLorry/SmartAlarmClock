@@ -51,6 +51,10 @@ class Mopidy:
         print "Mopidy playlist: " + self.current_playlist
         return
 
+    def ctl(self, action):
+        self.post_mopidy("playback."+action)
+        return
+
     def post_mopidy(self, method, params = {}):
         payload =  {
             "method": "core." + method ,

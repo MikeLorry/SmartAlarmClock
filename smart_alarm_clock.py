@@ -19,11 +19,13 @@ def main():
 
         # Read buttons input and trigger actions
         btn = switches.check_input()
-        if btn == "volume_up":
+        if btn in ["play","pause","stop","next","previous"]:
+            mopidy.ctl(btn)
+        elif btn == "volume_up":
             screen.index = 0
             screen.gauge_value = mopidy.volume_up()
             screen.mode = "clock_vol"
-        if btn == "volume_down":
+        elif btn == "volume_down":
             screen.index = 0
             screen.gauge_value = mopidy.volume_down()
             screen.mode = "clock_vol"
