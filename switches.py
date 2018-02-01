@@ -6,14 +6,14 @@ class Switches:
 
     # Default values
     all_buttons = [
-        {"module": "mopidy", "func": "play", "pin": 27},
-        {"module": "mopidy", "func": "pause", "pin": 22},
-        {"module": "mopidy", "func": "stop", "pin": 17},
-        {"module": "mopidy", "func": "next", "pin": 10},
-        {"module": "mopidy", "func": "previous", "pin": 4},
-        {"module": "mopidy", "func": "volume_up", "pin": 3},
-        {"module": "mopidy", "func": "volume_down", "pin": 2},
-        {"module": "screen", "func": "brightness", "pin": 9}
+        {"module": "mopidy", "func": "play", "pin": 10},
+        {"module": "mopidy", "func": "pause", "pin": 9},
+        {"module": "mopidy", "func": "stop", "pin": 22},
+        {"module": "mopidy", "func": "next", "pin": 11},
+        {"module": "mopidy", "func": "previous", "pin": 27},
+        {"module": "mopidy", "func": "volume_up", "pin": 17},
+        {"module": "mopidy", "func": "volume_down", "pin": 4},
+        {"module": "screen", "func": "brightness", "pin": 5}
     ]
     all_up = True
 
