@@ -8,7 +8,7 @@ class ScrollpHatHD:
     "ScrollpHatHD class to allow interaction with the Pimoroni Scroll pHat HD LED matrix"
 
     # Default values
-    default_mode = "clock"
+    default_mode = "demo"
     default_brightness = 0.3
 
     def __init__(self):
