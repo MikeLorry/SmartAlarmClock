@@ -23,6 +23,9 @@ class ScrollpHatHD:
         # Set mode index: value used for modes that needs an incrementing value
         self.index = 0
 
+        # set gauge value
+        self.gauge_value = 1
+
     def show(self):
         scrollphathd.clear()
         if self.mode == "clock":
@@ -34,12 +37,14 @@ class ScrollpHatHD:
                 self.index = 0
         elif self.mode == "clock_vol":
             self.clock()
-            self.volume_bar()
+            self.gauge()
             if self.index >= 60:
                 self.mode = "clock"
                 self.index = 0
         scrollphathd.show()
         return
+
+    def set_mode(self, )
 
     def set_brightness(self):
         brightness_min = 0.3
@@ -55,10 +60,10 @@ class ScrollpHatHD:
         scrollphathd.write_string(time.strftime("%H:%M"), x=0, y=0,  font=font5x5, brightness=self.brightness)
         return
 
-    def volume_bar(self, volume):
+    def gauge(self):
         self.index += 1
         y = 6
-        x_max = int(volume * 0.17)
+        x_max = int(self.gauge_value * 0.17)
         for x in range(x_max):
             scrollphathd.set_pixel(x, y, self.brightness)
         return

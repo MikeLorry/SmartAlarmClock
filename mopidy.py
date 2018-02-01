@@ -26,7 +26,7 @@ class Mopidy:
         self.post_mopidy("mixer.set_volume", {"volume": vol})
         self.current_vol = vol
         print "Mopidy volume: " + str(self.current_vol)
-        return self.current_vol
+        return
 
     def volume_up(self):
         new_vol = 0
@@ -35,7 +35,7 @@ class Mopidy:
         elif self.current_vol < 95:
             new_vol = self.current_vol + 5
         self.set_volume(new_vol)
-        return
+        return self.current_vol
 
     def volume_down(self):
         new_vol = 0
@@ -44,7 +44,7 @@ class Mopidy:
         elif self.current_vol > 5:
             new_vol = current_vol - 5
         self.set_volume(new_vol)
-        return
+        return self.current_vol
 
     def load_playlist(self):
         self.post_mopidy("tracklist.add", {"uri": self.current_playlist})

@@ -14,9 +14,18 @@ def main():
 
 
     while True:
+        # Refresh screen
         screen.show()
+
+        # Read buttons input and trigger actions
         btn = switches.check_input()
-        if btn.startswith("volume_"):
+        if btn == "volume_up":
+            screen.index = 0
+            screen.gauge_value = mopidy.volume_up()
+            screen.mode = "clock_vol"
+        if btn == "volume_down":
+            screen.index = 0
+            screen.gauge_value = mopidy.volume_down()
             screen.mode = "clock_vol"
         elif btn == "brightness":
             screen.set_brightness()
