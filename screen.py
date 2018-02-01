@@ -38,7 +38,7 @@ class ScrollpHatHD:
         elif self.mode == "clock_vol":
             self.clock()
             self.gauge()
-            if self.index >= 60:
+            if self.index >= 40:
                 self.mode = "clock"
                 self.index = 0
         scrollphathd.show()
