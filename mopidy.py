@@ -40,9 +40,9 @@ class Mopidy:
     def volume_down(self):
         new_vol = 0
         if self.current_vol <= 5:
-                new_vol = 0
-            elif self.current_vol > 5:
-                new_vol = current_vol - 5
+            new_vol = 0
+        elif self.current_vol > 5:
+            new_vol = current_vol - 5
         self.set_volume(new_vol)
         return
 
