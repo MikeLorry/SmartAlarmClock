@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import time
-import signal
+import math
 import scrollphathd
 from scrollphathd.fonts import font5x5
 
