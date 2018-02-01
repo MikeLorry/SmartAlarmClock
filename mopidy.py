@@ -26,7 +26,7 @@ class Mopidy:
         self.post_mopidy("mixer.set_volume", {"volume": vol})
         self.current_vol = vol
         print "Mopidy volume: " + str(self.current_vol)
-        return
+        return self.current_vol
 
     def volume_up(self):
         new_vol = 0

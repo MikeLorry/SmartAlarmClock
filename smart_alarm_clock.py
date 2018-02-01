@@ -15,7 +15,11 @@ def main():
 
     while True:
         screen.show()
-        switches.check_input()
+        btn = switches.check_input()
+        if btn.startswith("volume_"):
+            screen.mode = "clock_vol"
+        elif btn == "brightness":
+            screen.set_brightness()
 
         time.sleep(0.05)
 
