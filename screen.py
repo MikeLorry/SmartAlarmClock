@@ -44,8 +44,6 @@ class ScrollpHatHD:
         scrollphathd.show()
         return
 
-    def set_mode(self, )
-
     def set_brightness(self):
         brightness_min = 0.3
         brightness_step = 0.3
