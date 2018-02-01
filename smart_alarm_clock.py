@@ -3,17 +3,21 @@ import time
 import json
 from mopidy import Mopidy
 from screen import ScrollpHatHD
+from switches import Switches
 
 def main():
 
     # Create objects
     mopidy = Mopidy()
     screen = ScrollpHatHD()
+    switches = Switches()
+
 
     while True:
         screen.show()
+        switches.check_input()
 
-        time.sleep(0.1)
+        time.sleep(0.05)
 
     return
 

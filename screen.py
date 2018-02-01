@@ -14,13 +14,14 @@ class ScrollpHatHD:
     def __init__(self):
         # Set default display mode
         self.mode = ScrollpHatHD.default_mode
+        print "Screen mode: " + self.mode
 
         # Set brightness to default
         self.brightness = ScrollpHatHD.default_brightness
+        print "Screen brightness: " + str(self.brightness)
 
         # Set mode index: value used for modes that needs an incrementing value
         self.index = 0
-
 
     def show(self):
         scrollphathd.clear()
@@ -28,7 +29,7 @@ class ScrollpHatHD:
             self.clock()
         if self.mode == "demo":
             self.demo()
-            if self.index >= 30:
+            if self.index >= 200:
                 self.mode = "clock"
                 self.index = 0
         scrollphathd.show()

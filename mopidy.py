@@ -14,38 +14,41 @@ class Mopidy:
         # Set mopidy URL
         self.url = Mopidy.mopidy_url
         # Set volume to default
-	self.current_vol = Mopidy.default_vol
+        self.current_vol = Mopidy.default_vol
         self.set_volume(self.current_vol)
 
         # Loading default playlist
         self.current_playlist = Mopidy.default_playlist
         self.load_playlist()
+        return
 
     def set_volume(self, vol):
-	self.post_mopidy("mixer.set_volume", {"volume": vol})
+        self.post_mopidy("mixer.set_volume", {"volume": vol})
         self.current_vol = vol
+        print "Mopidy volume: " + slf.current_vol
         return
 
     def volume_up(self):
-	new_vol = 0
+        new_vol = 0
         if self.current_vol >= 95:
             new_vol = 100
         elif self.current_vol < 95:
             new_vol = self.current_vol + 5
-	self.set_volume(new_vol)
-	return
+        self.set_volume(new_vol)
+        return
 
     def volume_down(self):
-	new_vol = 0
-	if self.current_vol <= 5:
-            new_vol = 0
-        elif self.current_vol > 5:
-            new_vol = current_vol - 5
-	self.set_volume(new_vol)
-	return
+        new_vol = 0
+        if self.current_vol <= 5:
+                new_vol = 0
+            elif self.current_vol > 5:
+                new_vol = current_vol - 5
+        self.set_volume(new_vol)
+        return
 
     def load_playlist(self):
-	self.post_mopidy("tracklist.add", {"uri": self.current_playlist})
+        self.post_mopidy("tracklist.add", {"uri": self.current_playlist})
+        print "Mopidy playlist: " + self.current_playlist
         return
 
     def post_mopidy(self, method, params = {}):
@@ -55,6 +58,6 @@ class Mopidy:
             "params": params,
             "id": 1
             }
-	r = requests.post(self.url, data = json.dumps(payload))
+        r = requests.post(self.url, data = json.dumps(payload))
         return
 
