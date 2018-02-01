@@ -2,7 +2,7 @@
 import time
 import json
 from mopidy import Mopidy
-from scrollphathd import ScrollpHatHD
+from screen import ScrollpHatHD
 
 def main():
 

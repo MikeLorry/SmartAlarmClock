@@ -2,6 +2,7 @@
 import time
 import signal
 import scrollphathd
+from scrollphathd.fonts import font5x5
 
 class ScrollpHatHD:
     "ScrollpHatHD class to allow interaction with the Pimoroni Scroll pHat HD LED matrix"
