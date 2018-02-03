@@ -59,16 +59,17 @@ class Light:
 
     def writeCommandToBulb(self, cmd):
         # settings commands are sent to the 0x0021 characteristic
-        # all commands are prefixed with 0x55 (85) and suffixed with 0x0d 0x0a (                                                                             CR LF)
+        # all commands are prefixed with 0x55 (85) and suffixed with 0x0d 0x0a (CR LF)
         if cmd != '' :
             cmd = '55' + cmd + '0D0A'
             self.cycleHCI()
-            hd = check_output(['/usr/bin/hcitool', '-i', 'hci0', 'lecc', self.mac                                                                             ])
+            hd = check_output(['/usr/bin/hcitool', '-i', 'hci0', 'lecc', self.mac])
             ha = hd.split(' ');
             connectionHandle=0
-            if ha[0] == 'Connection' and ha[1] == 'handle' : connectionHandl                                                                             e = ha[2]
+            if ha[0] == 'Connection' and ha[1] == 'handle': 
+                connectionHandle = ha[2]
             if connectionHandle > 0 :
-                bulb = pexpect.spawn('gatttool -i hci0 -b ' + self.mac + ' -I                                                                             ')
+                bulb = pexpect.spawn('gatttool -i hci0 -b ' + self.mac + ' -I')
                 bulb.expect('\[LE\]>', timeout=60)
                 bulb.sendline('connect')
                 bulb.expect('\[LE\]>', timeout=60)
@@ -78,7 +79,7 @@ class Light:
                 bulb.expect('\[LE\]>', timeout=60)
                 bulb.sendline('exit')
                 bulb.expect(pexpect.EOF, timeout=60)
-                call(['hcitool', '-i', 'hci0', 'ledc', connectionHandle]                                                                             )
+                call(['hcitool', '-i', 'hci0', 'ledc', connectionHandle])
             self.cycleHCI()
 
     def setBrightness(self, value):
