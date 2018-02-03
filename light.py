@@ -49,7 +49,7 @@ class Light:
                     settings_array[i] = j
         return settings_array
 
-    def cycleHCI():
+    def cycleHCI(self):
         # maybe a useless time waster but it makes sure our hci0 is starting fre                                                                             sh and clean
         # nope in fact we need to call this before each time we do hci or gatt s                                                                             tuff or it doesn't work
         call(['hciconfig', 'hci0', 'down'])
