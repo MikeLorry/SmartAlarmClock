@@ -20,6 +20,9 @@ class Mopidy:
         # Loading default playlist
         self.current_playlist = Mopidy.default_playlist
         self.load_playlist()
+
+        # Set startup status
+        self.status = "pause"
         return
 
     def set_volume(self, vol):
@@ -52,7 +55,12 @@ class Mopidy:
         return
 
     def ctl(self, action):
-        self.post_mopidy("playback."+action)
+        if self.status == "pause" and action == "play":
+            self.post_mopidy("playback.play")
+        elif self.status == "play" and action == "play":    
+            self.post_mopidy("playback.pause")
+        else:
+            self.post_mopidy("playback."+action)
         return
 
     def post_mopidy(self, method, params = {}):

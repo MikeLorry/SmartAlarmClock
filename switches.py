@@ -5,14 +5,24 @@ class Switches:
     "Switches class to allow interaction with the switches connected to the Pi"
 
     # Default values
+    #all_buttons = [
+    #    {"module": "mopidy", "func": "play", "pin": 10},
+    #    {"module": "mopidy", "func": "pause", "pin": 9},
+    #    {"module": "mopidy", "func": "stop", "pin": 22},
+    #    {"module": "mopidy", "func": "next", "pin": 11},
+    #    {"module": "mopidy", "func": "previous", "pin": 27},
+    #    {"module": "mopidy", "func": "volume_up", "pin": 17},
+    #    {"module": "mopidy", "func": "volume_down", "pin": 4},
+    #    {"module": "screen", "func": "brightness", "pin": 5}
+    #]
     all_buttons = [
+        {"module": "bluetooth", "func": "scan", "pin": 4},
+        {"module": "mopidy", "func": "volume_down", "pin": 17},
+        {"module": "mopidy", "func": "volume_up", "pin": 27},
+        {"module": "mopidy", "func": "previous", "pin": 22},
         {"module": "mopidy", "func": "play", "pin": 10},
-        {"module": "mopidy", "func": "pause", "pin": 9},
-        {"module": "mopidy", "func": "stop", "pin": 22},
-        {"module": "mopidy", "func": "next", "pin": 11},
-        {"module": "mopidy", "func": "previous", "pin": 27},
-        {"module": "mopidy", "func": "volume_up", "pin": 17},
-        {"module": "mopidy", "func": "volume_down", "pin": 4},
+        {"module": "mopidy", "func": "next", "pin": 9},
+        {"module": "light", "func": "switch", "pin": 11},
         {"module": "screen", "func": "brightness", "pin": 5}
     ]
     all_up = True

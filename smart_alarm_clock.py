@@ -4,6 +4,7 @@ import json
 from mopidy import Mopidy
 from screen import ScrollpHatHD
 from switches import Switches
+from light import Light
 
 def main():
 
@@ -11,7 +12,7 @@ def main():
     mopidy = Mopidy()
     screen = ScrollpHatHD()
     switches = Switches()
-
+    light = Light()
 
     while True:
         # Refresh screen
@@ -19,7 +20,7 @@ def main():
 
         # Read buttons input and trigger actions
         btn = switches.check_input()
-        if btn in ["play","pause","stop","next","previous"]:
+        if btn in ["play","next","previous"]:
             mopidy.ctl(btn)
         elif btn == "volume_up":
             screen.index = 0
@@ -31,6 +32,8 @@ def main():
             screen.mode = "clock_vol"
         elif btn == "brightness":
             screen.set_brightness()
+        elif btn == "switch":
+            light.switchBulb()
 
         time.sleep(0.05)
 
