@@ -33,11 +33,11 @@ class Light:
 
     def getSettings(self):
         # read the settings characteristic (read handle is 0x0024)
-        # command return value = 'Characteristic value/descriptor: 00 b2 ff 00 0                                                                             0'
+        # command return value = 'Characteristic value/descriptor: 00 b2 ff 00 00'
         # function returns settings as array of five integers
         self.cycleHCI();
         settings_array = [0,0,0,0,0]
-        raw_input=check_output(['gatttool', '-i', 'hci0', '-b', self.mac, '--char-rea                                                                             d', '--handle=0x0024']);
+        raw_input=check_output(['gatttool', '-i', 'hci0', '-b', self.mac, '--char-read', '--handle=0x0024']);
         if ':' in raw_input:
             raw_list=raw_input.split(':')
             raw_data=raw_list[1]
@@ -50,8 +50,8 @@ class Light:
         return settings_array
 
     def cycleHCI(self):
-        # maybe a useless time waster but it makes sure our hci0 is starting fre                                                                             sh and clean
-        # nope in fact we need to call this before each time we do hci or gatt s                                                                             tuff or it doesn't work
+        # maybe a useless time waster but it makes sure our hci0 is starting fresh and clean
+        # nope in fact we need to call this before each time we do hci or gatt stuff or it doesn't work
         call(['hciconfig', 'hci0', 'down'])
         time.sleep(0.1)
         call(['hciconfig', 'hci0', 'up'])
