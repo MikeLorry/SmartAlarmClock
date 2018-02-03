@@ -57,7 +57,7 @@ class Light:
         call(['hciconfig', 'hci0', 'up'])
         time.sleep(0.1)
 
-    def writeCommandToBulb(self, cmd :
+    def writeCommandToBulb(self, cmd):
         # settings commands are sent to the 0x0021 characteristic
         # all commands are prefixed with 0x55 (85) and suffixed with 0x0d 0x0a (                                                                             CR LF)
         if cmd != '' :
@@ -90,7 +90,7 @@ class Light:
         else :
             self.writeCommandToBulb('120B')
 
-    def setBulbColour(self, colour) :
+    def setBulbColour(self, colour):
         # colour command is 13 RR GG BB (19, Red, Green, Blue)
         value = '13' + colour
         self.writeCommandToBulb(value)
