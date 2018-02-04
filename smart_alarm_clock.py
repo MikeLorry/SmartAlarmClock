@@ -35,6 +35,7 @@ def main():
         elif btn == "switch":
             light.switchBulb()
         elif btn == "scan":
+            screen.index = 0
             screen.mode = "clock_scan"
 
         time.sleep(0.05)

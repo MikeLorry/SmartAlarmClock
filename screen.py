@@ -87,8 +87,7 @@ class ScrollpHatHD:
 
     def scan(self):
         y = 6
-        #row = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        brightness_range = [0.6, 0.4, 0.2]
+        brightness_range = [0.7, 0.4, 0.1]
         if self.index == 16 or self.index == 0:
             self.direction = self.direction * -1
         self.index += self.direction
