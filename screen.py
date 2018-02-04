@@ -47,7 +47,7 @@ class ScrollpHatHD:
         elif self.mode == "clock_scan":
             self.clock()
             self.scan()
-            if self.index >= 40:
+            if self.index >= 64:
                 self.mode = "clock"
                 self.index = 0
         scrollphathd.show()
@@ -87,15 +87,15 @@ class ScrollpHatHD:
 
     def scan(self):
         y = 6
-        brightness_range = [0.7, 0.4, 0.1]
+        brightness_range = [0.7, 0.5, 0.3, 0.2, 0.1]
         x = self.index % 16
         if x == 0 and self.index > 0:
             self.direction = self.direction * -1
-        elif self.direction == -1:
+        if self.direction == -1:
             x = 16 - x
         else:
             x = x + 1
-        #self.index += self.direction
-        for i in range(3):
+        self.index += 1
+        for i in range(5):
             if 0 <= x - i <= 16:
                 scrollphathd.set_pixel(x - i, y, brightness_range[i])
