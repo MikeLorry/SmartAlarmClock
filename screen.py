@@ -26,6 +26,9 @@ class ScrollpHatHD:
         # set gauge value
         self.gauge_value = 1
 
+        # set direction value
+        self.direction = 1
+
     def show(self):
         scrollphathd.clear()
         if self.mode == "clock":
@@ -38,6 +41,12 @@ class ScrollpHatHD:
         elif self.mode == "clock_vol":
             self.clock()
             self.gauge()
+            if self.index >= 40:
+                self.mode = "clock"
+                self.index = 0
+        elif self.mode == "clock_scan":
+            self.clock()
+            self.scan()
             if self.index >= 40:
                 self.mode = "clock"
                 self.index = 0
@@ -75,3 +84,14 @@ class ScrollpHatHD:
                 v = 0.3 + (0.3 * math.sin((x * s) + self.index/ 4.0) * math.cos((y * s) + self.index/ 4.0))
 
                 scrollphathd.pixel(x, y, v)
+
+    def scan(self):
+        y = 6
+        #row = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        brightness_range = [0.6, 0.4, 0.2]
+        if self.index == 16 or self.index == 0:
+            self.direction = self.direction * -1
+        self.index += self.direction
+        for i in range(3):
+            if 0 <= self.index - i <= 16:
+                scrollphathd.set_pixel(self.index - i, y, brightness_range[i])

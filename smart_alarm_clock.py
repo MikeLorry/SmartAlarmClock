@@ -34,6 +34,8 @@ def main():
             screen.set_brightness()
         elif btn == "switch":
             light.switchBulb()
+        elif btn == "scan":
+            screen.mode = "clock_scan"
 
         time.sleep(0.05)
 
