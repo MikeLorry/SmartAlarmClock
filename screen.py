@@ -88,14 +88,11 @@ class ScrollpHatHD:
     def scan(self):
         y = 6
         brightness_range = [0.7, 0.5, 0.3, 0.2, 0.1]
-        x = self.index % 16
-        if x == 0 and self.index > 0:
-            self.direction = self.direction * -1
-        if self.direction == -1:
-            x = 16 - x
+        if (self.index // 16) % 2 != 0:
+            x = 16 - (self.index % 16)
         else:
-            x = x + 1
-        self.index += 1
+            x = (self.index % 16) + 1
         for i in range(5):
             if 0 <= x - i <= 16:
                 scrollphathd.set_pixel(x - i, y, brightness_range[i])
+        self.index += 1
