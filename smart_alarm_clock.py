@@ -37,10 +37,10 @@ def main():
         elif btn == "switch":
             light.switchBulb()
         elif btn == "scan":
-            screen.mode = "clock_butterfly"
+            screen.mode = "clock_vu"
 
         if screen.mode == "clock_vu" or screen.mode == "clock_butterfly":
-            screen.gauge_value = monitor.last_sample * mopidy.current_vol * 0.012
+            screen.gauge_value = monitor.last_sample * 13 / mopidy.current_vol
 
         time.sleep(0.05)
 
