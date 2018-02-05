@@ -5,6 +5,7 @@ from mopidy import Mopidy
 from screen import ScrollpHatHD
 from switches import Switches
 from light import Light
+from peak import PeakMonitor
 
 def main():
 
@@ -13,6 +14,7 @@ def main():
     screen = ScrollpHatHD()
     switches = Switches()
     light = Light()
+    monitor = PeakMonitor()
 
     while True:
         # Refresh screen
