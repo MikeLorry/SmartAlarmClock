@@ -57,8 +57,10 @@ class Mopidy:
     def ctl(self, action):
         if self.status == "pause" and action == "play":
             self.post_mopidy("playback.play")
+            self.status = "play"
         elif self.status == "play" and action == "play":    
             self.post_mopidy("playback.pause")
+            self.status = "pause"
         else:
             self.post_mopidy("playback."+action)
         return
