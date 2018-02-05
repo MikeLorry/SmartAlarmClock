@@ -114,7 +114,8 @@ class ScrollpHatHD:
         x_center = 8
         brightness = 0.7
         width = int(self.gauge_value / 1.75 )
-        scrollphathd.set_pixel(x_center, y, self.brightness)
+        if width > 0:
+            scrollphathd.set_pixel(x_center, y, self.brightness)
         for i in range(1, width):
             scrollphathd.set_pixel(x_center + i, y, brightness - (i*0.6/width))
             scrollphathd.set_pixel(x_center - i, y, brightness - (i*0.6/width))
