@@ -26,9 +26,6 @@ class ScrollpHatHD:
         # set gauge value
         self.gauge_value = 1
 
-        # set direction value
-        self.direction = 1
-
     def show(self):
         scrollphathd.clear()
         if self.mode == "clock":
@@ -44,6 +41,9 @@ class ScrollpHatHD:
             if self.index >= 40:
                 self.mode = "clock"
                 self.index = 0
+        elif self.mode == "clock_vu":
+            self.clock()
+            self.vumeter()
         elif self.mode == "clock_scan":
             self.clock()
             self.scan()
@@ -98,3 +98,10 @@ class ScrollpHatHD:
             if 0 <= x - i * dir <= 16:
                 scrollphathd.set_pixel(x - i * dir, y, brightness_range[i])
         self.index += 1
+
+    def vumeter(self):
+        y = 6
+        x_max = int(self.gauge_value * 0.13)
+        for x in range(x_max):
+            scrollphathd.set_pixel(x, y, self.brightness)
+        return
