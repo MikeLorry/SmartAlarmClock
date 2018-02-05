@@ -38,8 +38,10 @@ def main():
             light.switchBulb()
         elif btn == "scan":
             screen.index = 0
-            screen.gauge_value = monitor.last_sample
             screen.mode = "clock_vu"
+
+        if screen.mode == "clock_vu":
+            screen.gauge_value = monitor.last_sample
 
         time.sleep(0.05)
 
