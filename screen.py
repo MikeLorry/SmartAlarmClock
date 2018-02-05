@@ -44,6 +44,9 @@ class ScrollpHatHD:
         elif self.mode == "clock_vu":
             self.clock()
             self.vumeter()
+        elif self.mode == "clock_butterfly":
+            self.clock()
+            self.butterfly()
         elif self.mode == "clock_scan":
             self.clock()
             self.scan()
@@ -104,4 +107,14 @@ class ScrollpHatHD:
         x_max = int(self.gauge_value)
         for x in range(x_max):
             scrollphathd.set_pixel(x, y, self.brightness)
+        return
+
+    def butterfly(self):
+        y = 6
+        x_center = 8
+        width = int(self.gauge_value / 2)
+        scrollphathd.set_pixel(x_center, y, self.brightness)
+        for i in range(1, width):
+            scrollphathd.set_pixel(x_center + i, y, self.brightness - i/15)
+            scrollphathd.set_pixel(x_center - i, y, self.brightness - i/15)
         return
