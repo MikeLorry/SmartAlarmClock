@@ -101,7 +101,7 @@ class ScrollpHatHD:
 
     def vumeter(self):
         y = 6
-        x_max = int(self.gauge_value * 0.13)
+        x_max = int(self.gauge_value)
         for x in range(x_max):
             scrollphathd.set_pixel(x, y, self.brightness)
         return

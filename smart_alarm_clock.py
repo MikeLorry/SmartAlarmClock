@@ -41,7 +41,7 @@ def main():
             screen.mode = "clock_vu"
 
         if screen.mode == "clock_vu":
-            screen.gauge_value = monitor.last_sample
+            screen.gauge_value = monitor.last_sample * mopidy.current_vol * 0.013
 
         time.sleep(0.05)
 
